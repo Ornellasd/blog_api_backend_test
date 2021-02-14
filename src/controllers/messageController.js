@@ -10,7 +10,7 @@ exports.messages_get = (req, res) => {
   });
 }
 
-exports.message_post = (req, res) => {
+exports.new_message_post = (req, res) => {
   const message = new Message({
     user: req.body['message-user'],
     title: req.body['message-title'],
@@ -21,4 +21,9 @@ exports.message_post = (req, res) => {
 
   // expand save method
   message.save();
+}
+
+exports.message_delete_post = (req, res) => {
+  // mongoose find record by id
+  // how to have frontend pass this in? need unique identifier of some sort.
 }

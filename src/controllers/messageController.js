@@ -5,6 +5,7 @@ exports.messages_get = (req, res) => {
     if(err) {
       return err;
     } else {
+      console.log(messages);
       return res.send(messages);
     }
   });
@@ -23,7 +24,8 @@ exports.new_message_post = (req, res) => {
   message.save();
 }
 
-exports.message_delete_post = (req, res) => {
-  // mongoose find record by id
-  // how to have frontend pass this in? need unique identifier of some sort.
+exports.delete_message_post = (req, res) => {
+  Message.findByIdAndRemove(req.params.id, (err, message) => {
+    if(err) return err;
+  });
 }
